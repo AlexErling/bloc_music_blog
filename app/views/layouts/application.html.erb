@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Music Blog</title>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
 </head>
-<body>
-  
-  Checkthesebeats.com
-  Posts
-  Playlists
-  Meet the writers
-  
-  Facebook link
-  Twitter Link
-  Soundcloud
-  Spotify
-  
 
-<%= yield %>
+<div class="pull-right-user-info">
+        <% if admin_signed_in? %>
+          <div class="pull-right">
+            <ul class="nav nav-tabs", style="border-bottom:0px;">
+              <li class="username">Signed in as: <strong><%= current_admin.name %></strong></li>
+              <li><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %></li>
+              <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %></li>
+            </ul>
+            <% end %>
+          </div>
 
-Song Submission
 
-Contant Us
+<body ng-app="myApp">
+  <%= yield %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><% alert %></p>
+
 
 </body>
 </html>

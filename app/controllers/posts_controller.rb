@@ -7,16 +7,18 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
+  def new
+    @post = Post.new
+    @post.admin= current_admin
+  end
+  
   def edit
     @post = Post.find(params[:id])
   end  
 
-  def new
-    @post = Post.new
-  end
-  
   def create
-    
+    @admin = current_admin
+
     @post = Post.new
     @post.assign_attributes(post_params)
    
@@ -58,7 +60,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :body, :link)
+    params.require(:post).permit(:title, :body, :link, :admin_id, :admin_ids => [] )
   end
 
 end

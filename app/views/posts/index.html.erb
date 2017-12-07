@@ -4,8 +4,12 @@
     <div>
         <%= link_to post.title, post %>
         <%== post.link %>
+        Created <%= time_ago_in_words(post.created_at.to_date) %>
+        Posted by: <%= post.admin_id %>
     </div>
 <% end %>
 
 
+<% if current_admin %>
 <%= link_to "New Post", new_post_path(@post) %>
+<% end %>
