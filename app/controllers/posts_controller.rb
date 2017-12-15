@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -60,7 +64,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :body, :link, :admin_id, :admin_ids => [] )
+    params.require(:post).permit(:title, :body, :link, :tag_list, :admin_id, :admin_ids => [] )
   end
 
 end

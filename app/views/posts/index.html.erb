@@ -3,12 +3,19 @@
         <% if current_admin %>
             <%= link_to "New Post", new_post_path(@post) %>
         <% end %>
+        
+
 
     <% @posts.each do |post| %>
         <div class="media">
             <h3 class ="media-heading">
                 <%= link_to post.title, post %>
-                </h3>
+            </h3>
+             <small>
+                 <p>
+                Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
+                </p>
+            </small>
             <div class="link">
                 <%== post.link %>
             </div>
