@@ -1,15 +1,28 @@
-<h1> Welcome</h1>
-
-<% @posts.each do |post| %>
-    <div>
-        <%= link_to post.title, post %>
-        <%== post.link %>
-        Created <%= time_ago_in_words(post.created_at.to_date) %>
-        Posted by: <%= post.admin_id %>
-    </div>
-<% end %>
-
-
+<div class="row"
+<div class="col-md-8", style="margin-left:10px">
 <% if current_admin %>
 <%= link_to "New Post", new_post_path(@post) %>
 <% end %>
+
+<% @posts.each do |post| %>
+    <div class="media">
+        <h3 class ="media-heading">
+            <%= link_to post.title, post %>
+        </h3>
+        <div class="link">
+            <%== post.link %>
+        </div>
+        <small>
+            Posted <%= time_ago_in_words(post.created_at.to_date) %> || Posted by: <%= post.admin.name %>
+        <div>
+        <% if current_admin %>
+    <%= link_to "Edit", edit_post_path(post) %>
+    <div>
+        </small>
+        <hr>
+<% end %>
+    </div>
+<% end %>
+
+</div>
+</div>

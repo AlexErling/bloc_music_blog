@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    puts "-------------"
+    p @posts[0]
   end
 
   def show
@@ -9,7 +11,7 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-    @post.admin= current_admin
+    @admin= current_admin
   end
   
   def edit
@@ -17,10 +19,12 @@ class PostsController < ApplicationController
   end  
 
   def create
-    @admin = current_admin
-
     @post = Post.new
+    @admin = current_admin
     @post.assign_attributes(post_params)
+    @post.admin = @admin
+    p "post before save------"
+    p @post
    
     if @post.save
       flash[:notice] = "Successfully created post!"

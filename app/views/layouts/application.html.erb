@@ -5,26 +5,30 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-
 </head>
 
-<div class="pull-right-user-info">
+<body ng-app="myApp">
+  
+  <h1>Checkthesebeats.com</h1>
+  <hr>
+  <ul class="nav nav-tabs">
+    <li><%= link_to "Home" %></li>
+    <li><%= link_to "Playlists" %></li>
+    <li><%= link_to "About" %></li>
+    <li><%= link_to "Song Submission" %></li>
+    <div class="user-info pull-right">
         <% if admin_signed_in? %>
-          <div class="pull-right">
-            <ul class="nav nav-tabs", style="border-bottom:0px;">
-              <li class="username">Signed in as: <strong><%= current_admin.name %></strong></li>
+              <li>Signed in as: <strong><%= current_admin.name %></strong></li>
               <li><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %></li>
               <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %></li>
             </ul>
             <% end %>
           </div>
-
-
-<body ng-app="myApp">
-  <%= yield %>
+  </ul>
   <p class="notice"><%= notice %></p>
   <p class="alert"><% alert %></p>
 
+  <%= yield %>
 
 </body>
 </html>
