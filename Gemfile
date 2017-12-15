@@ -15,6 +15,8 @@ gem 'devise'
 gem 'angular-rails-templates'
 gem 'active_model_serializers'
 gem 'gon'
+gem 'ckeditor'
+gem 'paperclip'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

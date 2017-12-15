@@ -1,6 +1,6 @@
 <%= simple_form_for @post do |f| %>
     <%= f.input :title, label: 'Song Title', placeholder: 'Title of the song' %>
     <%= f.input :link, label: 'Embedded Link', placeholder: 'Copy and Paste embedded link from Soundcloud/Spotifty.' %>
-    <%= f.input :body, label: 'Song Description', placeholder: 'Write a brief description of the song.' %>
+    <%= f.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, label: 'Song Description', placeholder: 'Write a brief description of the song.' %>
     <%= f.submit %>
 <% end %>

@@ -1,28 +1,25 @@
-<div class="row"
-<div class="col-md-8", style="margin-left:10px">
-<% if current_admin %>
-<%= link_to "New Post", new_post_path(@post) %>
-<% end %>
-
-<% @posts.each do |post| %>
-    <div class="media">
-        <h3 class ="media-heading">
-            <%= link_to post.title, post %>
-        </h3>
-        <div class="link">
-            <%== post.link %>
-        </div>
-        <small>
-            Posted <%= time_ago_in_words(post.created_at.to_date) %> || Posted by: <%= post.admin.name %>
-        <div>
+<div class="row">
+    <div class="col-md-8", style="margin-left:10px">
         <% if current_admin %>
-    <%= link_to "Edit", edit_post_path(post) %>
-    <div>
-        </small>
-        <hr>
-<% end %>
-    </div>
-<% end %>
+            <%= link_to "New Post", new_post_path(@post) %>
+        <% end %>
 
+    <% @posts.each do |post| %>
+        <div class="media">
+            <h3 class ="media-heading">
+                <%= link_to post.title, post %>
+                </h3>
+            <div class="link">
+                <%== post.link %>
+            </div>
+            <small>
+                Posted by: <%= post.admin.name %> | <%= post.created_at.strftime(" %B #{post.created_at.day.ordinalize}, %Y") %> 
+                <% if current_admin %>
+                    <%= link_to "Edit", edit_post_path(post) %>
+                <% end %>
+            </small>
+            <hr>
+        <% end %>
+</div>
 </div>
 </div>

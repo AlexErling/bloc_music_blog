@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    puts "-------------"
-    p @posts[0]
   end
 
   def show
@@ -23,8 +21,6 @@ class PostsController < ApplicationController
     @admin = current_admin
     @post.assign_attributes(post_params)
     @post.admin = @admin
-    p "post before save------"
-    p @post
    
     if @post.save
       flash[:notice] = "Successfully created post!"
@@ -52,10 +48,10 @@ class PostsController < ApplicationController
     @post.assign_attributes(post_params)
     
     if @post.save
-      flash[:notice] = "You wiki has been updated."
+      flash[:notice] = "You post has been updated."
       redirect_to @post
     else
-      flash.now[:alert] = "There was an Error editing your Wiki."
+      flash.now[:alert] = "There was an error editing your post."
       render :edit
     end
   end
