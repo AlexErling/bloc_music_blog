@@ -4,7 +4,7 @@ Admin.create!(
     password: "password"
     )
 
-10.times do
+1.times do
     post = Post.create!(
         title: "Feel so Close",
         body: "New Banger",
